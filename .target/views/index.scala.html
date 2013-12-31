@@ -1,4 +1,4 @@
-@(message: String) @main("Neofili Haber Welcome") {
+@(newsList : java.util.List[models.News]) @main("Neofili Haber Welcome")  {
 
 
 <div class="jumbotron">
@@ -15,27 +15,15 @@
 <div class="container">
 	<!-- Example row of columns -->
 	<div class="row">
+	@for(news <- newsList) {
 		<div class="col-md-4">
 			<h2>Haber1</h2>
-			<p>Juve'nin hali</p>
+			<p>@news.detail</p>
 			<p>
 				<a class="btn btn-default" href="#" role="button">Detay&raquo;</a>
 			</p>
 		</div>
-		<div class="col-md-4">
-			<h2>Haber2</h2>
-			<p>Trafik haberi</p>
-			<p>
-				<a class="btn btn-default" href="#" role="button">Detay&raquo;</a>
-			</p>
-		</div>
-		<div class="col-md-4">
-			<h2>Haber3</h2>
-			<p>Dekolte fotosu</p>
-			<p>
-				<a class="btn btn-default" href="#" role="button">Detay&raquo;</a>
-			</p>
-		</div>
+	}
 	</div>
 
 	<hr>
