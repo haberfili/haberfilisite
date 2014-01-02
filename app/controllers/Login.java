@@ -22,11 +22,15 @@ public class Login extends Controller {
 	public static Result save() {
 		try {
 			Form<Dynamic> bindFromRequest = Form.form().bindFromRequest();
-			String username = bindFromRequest.get().getData().get("username").toString();
+			String title = bindFromRequest.get().getData().get("title").toString();
+			String detail = bindFromRequest.get().getData().get("detail").toString();
+			String link = bindFromRequest.get().getData().get("link").toString();
 			DBConnector connector = new DBConnector();
 			Datastore datasource = connector.getDatasource();
 			News news = new News();
-			news.detail = username;
+			news.title=title;
+			news.detail=detail;
+			news.link=link;
 			datasource.save(news);
 		} catch (Exception e) {
 			System.out.println("error: " + e.getMessage());

@@ -21,12 +21,18 @@ public class DBConnector {
 		Integer port = Play.application().configuration().getInt("mongo.port");
 		String database=Play.application().configuration().getString("mongo.database");
 		String username=Play.application().configuration().getString("mongo.username");
-		char[] password=Play.application().configuration().getString("mongo.password").toCharArray();
+		String password=Play.application().configuration().getString("mongo.password");
 		mongo = new MongoClient(new ServerAddress(host, port));
 		morphia = new Morphia();
 		morphia.map(News.class);
-		ds = morphia.createDatastore(mongo, database,username,password);
+		if(username == null){
+			ds = morphia.createDatastore(mongo, database);
+		}
+		else{
+			ds = morphia.createDatastore(mongo, database,username,password.toCharArray());			
+		}
 		return ds;
 	}
 
 }
+
