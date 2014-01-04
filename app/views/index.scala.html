@@ -17,6 +17,9 @@
 	<div class="row">
 	@for(news <- newsList) {
 		<div class="col-md-4">
+		<div style="width:200px;height:200px;overflow:hidden;" >
+   			<img src="@news.image" width="200px" height="200px">
+		</div>
 			<h2>@news.title</h2>
 			<p>@news.detail</p>
 			<p>
