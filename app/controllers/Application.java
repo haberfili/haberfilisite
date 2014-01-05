@@ -4,6 +4,7 @@ import java.util.List;
 
 import models.News;
 import mongo.DBConnector;
+import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -15,6 +16,10 @@ import com.mongodb.DBAddress;
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.ServerAddress;
+
+import forms.Login;
+
+import static play.data.Form.*;
 
 import play.*;
 import play.mvc.*;
@@ -32,7 +37,7 @@ public class Application extends Controller {
 		} catch (Exception e) {
 			System.out.println("error: " + e.getMessage());
 		}
+		System.out.println("sessionemail is:"+session("email"));
 		return ok(index.render(newsList));
 	}
-
 }

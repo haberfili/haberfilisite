@@ -24,7 +24,7 @@ public class DBConnector {
 		String password=Play.application().configuration().getString("mongo.password");
 		mongo = new MongoClient(new ServerAddress(host, port));
 		morphia = new Morphia();
-		morphia.map(News.class);
+//		morphia.map(News.class);
 		if(username == null){
 			ds = morphia.createDatastore(mongo, database);
 		}

@@ -1,11 +1,9 @@
 package controllers;
 
-import com.google.code.morphia.Datastore;
-
 import models.News;
 import mongo.DBConnector;
-import play.data.DynamicForm.Dynamic;
 import play.data.Form;
+import play.data.DynamicForm.Dynamic;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.*;
@@ -13,10 +11,11 @@ import play.mvc.*;
 
 import views.html.*;
 
-public class Login extends Controller {
+import com.google.code.morphia.Datastore;
 
-	public static Result login() {
-		return ok(login.render("LoginYour new application is ready."));
+public class NewsController extends Controller {
+	public static Result news() {
+		return ok(news.render("LoginYour new application is ready."));
 	}
 
 	public static Result save() {
@@ -35,6 +34,6 @@ public class Login extends Controller {
 		} catch (Exception e) {
 			System.out.println("error: " + e.getMessage());
 		}
-		return ok(login.render("LoginYour new application is ready."));
+		return ok(news.render("LoginYour new application is ready."));
 	}
 }

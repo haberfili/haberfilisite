@@ -1,20 +1,35 @@
-@(message: String)
-
-@main("Neofili Haber Login") {
-<form method="post" action="/save">
-  <tr>
-    <input type="text" name="title" id="title" />
-    <input type="text" name="detail" id="detail" />
-    <input type="text" name="link" id="link" />
-  </tr>
-  
-  <tr>
-  	<td>
-  	<p>
-				 <input type="submit" value="Login" />
-			</p>
-  	</td>
-  </tr>
-</form>
+@(loginForm: Form[forms.Login],user:models.User)
+@import helper._
+@main("Neofili Haber Login",user: models.User) {
+    @if(loginForm.hasErrors) {
+        <div class="alert-message error">
+            <p><strong>Oops</strong> Please fix all errors</p>
+        </div>
+    }
+    
+    @helper.form(action = routes.LoginController.authenticate, 'id -> "loginForm") {
+        
+        <fieldset>
+            <legend>General information</legend>
+            
+            @inputText(
+                loginForm("email"), 
+                '_label -> "email"
+            )
+            
+            @inputText(
+                loginForm("password"), 
+                '_label -> "Password"
+            )
+            
+           
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" class="btn primary" value="Insert">
+        </div>
+        
+    }
+    
 
 }
