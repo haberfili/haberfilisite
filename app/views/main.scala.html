@@ -23,13 +23,17 @@
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 		
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootswatch.min.css")">
+		<link href="@routes.Assets.at("font-awesome/css/font-awesome.min.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("stylesheets/modern-business.css")" rel="stylesheet">
+		
+		
 		
     </head>
     <body >
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target=".navbar-collapse">
 				<span class="sr-only">Toggle navigation</span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
@@ -37,17 +41,47 @@
 			</button>
 			<a class="navbar-brand" href="#">NeoFili Haber</a>
 		</div>
-		<div class="navbar-collapse collapse">
-			<form class="navbar-form navbar-right" role="form">
-				<div class="form-group">
-					<input type="text" placeholder="Email" class="form-control">
-				</div>
-				<div class="form-group">
-					<input type="password" placeholder="Password" class="form-control">
-				</div>
-				<button type="submit" class="btn btn-success">Sign in</button>
-			</form>
+		 
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				@if(user==null) {
+				
+				<li >
+						<a href="/login" >Login</a>
+						</li>
+							<li>
+								<a href="#">Sign Up</a>
+							</li>
+						
+					
+				<!-- 
+					<li class="dropdown">
+						<a href="/login" class="dropdown-toggle" data-toggle="dropdown">Login
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="#">Sign Up</a>
+							</li>
+						</ul>
+					</li>
+					 -->
+				}
+				@if(user!=null) {
+					<li>
+						<a href="#">@user.email</a>
+					</li>
+					<li>
+						<a href="#">Profile</a>
+					</li>
+					<li>
+						<a href="#">Settings</a>
+					</li>
+				}				
+				</ul>
 		</div>
+		
+		
 		<!--/.navbar-collapse -->
 	</div>
 </div>

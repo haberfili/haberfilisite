@@ -43,6 +43,12 @@ public class User {
         return ds.find(User.class).filter("email", email).filter("password", password).get();
     }
     
+    public static User findByEmail(String email) throws Exception {
+    	DBConnector connector= new DBConnector();
+		Datastore ds= connector.getDatasource();
+        return ds.find(User.class).filter("email", email).get();
+    }
+    
     // --
     
     public String toString() {

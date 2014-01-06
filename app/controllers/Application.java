@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.News;
+import models.User;
 import mongo.DBConnector;
 import play.data.Form;
 import play.mvc.Controller;
@@ -28,7 +29,7 @@ import views.html.*;
 
 public class Application extends Controller {
 
-	public static Result index() {
+	public static Result index() throws Exception{
 		List<News> newsList = null;
 		try {
 			DBConnector connector= new DBConnector();
@@ -38,6 +39,7 @@ public class Application extends Controller {
 			System.out.println("error: " + e.getMessage());
 		}
 		System.out.println("sessionemail is:"+session("email"));
-		return ok(index.render(newsList));
+		User user = User.findByEmail(session("email"));
+		return ok(index.render(newsList,user));
 	}
 }
