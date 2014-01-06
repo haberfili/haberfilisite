@@ -1,4 +1,4 @@
-@(newsList : java.util.List[models.News]) @main("Neofili Haber Welcome",null)  {
+@(newsList : java.util.List[models.News],user:models.User) @main("Neofili Haber Welcome",user:models.User)  {
 
 
 <div class="jumbotron">
@@ -15,16 +15,27 @@
 <div class="container">
 	<!-- Example row of columns -->
 	<div class="row">
+	<div class="col-lg-12">
+		<h2 class="page-header">Your News</h2>
+	</div>
 	@for(news <- newsList) {
-		<div class="col-md-4">
-		<div style="width:200px;height:200px;overflow:hidden;" >
-   			<img src="@news.image" width="200px" height="200px">
-		</div>
-			<h2>@news.title</h2>
+		<div class="col-sm-4">
+			<img class="img-responsive" src="@news.image" >
+			<h3>@news.title <small>ntvmsnbc.com</small> </h3>
 			<p>@news.detail</p>
-			<p>
-				<a class="btn btn-default" target="_blank" href="@news.link" role="button">Detay&raquo;</a>
-			</p>
+			<ul class="list-unstyled list-inline list-social-icons">
+              <a class="btn btn-default" target="_blank" href="@news.link" role="button">Detay&raquo;</a>
+              <li class="tooltip-social facebook-link">
+              	<a href="#facebook-profile" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
+              	<i class="fa fa-facebook-square fa-2x"></i>
+              	</a>
+              </li>
+              <li class="tooltip-social twitter-link"><a href="#twitter-profile" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+              <li class="tooltip-social google-plus-link"><a href="#google-plus-profile" data-toggle="tooltip" data-placement="top" title="Google+"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+            </ul>
+			
+			
+			
 		</div>
 	}
 	</div>

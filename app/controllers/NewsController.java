@@ -32,7 +32,6 @@ public class NewsController extends Controller {
 			news.link=link;
 			datasource.save(news);
 		} catch (Exception e) {
-			System.out.println("error: " + e.getMessage());
 		}
 		return ok(news.render("LoginYour new application is ready."));
 	}

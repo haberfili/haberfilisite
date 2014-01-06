@@ -28,8 +28,6 @@ public class SignupController extends Controller {
 			Form<Dynamic> bindFromRequest = Form.form().bindFromRequest();
 			String email = bindFromRequest.get().getData().get("email").toString();
 			String password=bindFromRequest.get().getData().get("password").toString();
-			System.out.println("printing: "+email);
-			System.out.println("printing: "+password);
 			User user = new User();
 			user.email=email;
 			user.password=password;
@@ -38,7 +36,6 @@ public class SignupController extends Controller {
 			ds.save(user);
 			
 		} catch (Exception e) {
-			System.out.println("error: " + e.getMessage());
 		}
 		return ok(signup.render("Your new application is ready."));
 	}

@@ -36,9 +36,7 @@ public class Application extends Controller {
 			Datastore datasource = connector.getDatasource();
 			newsList = datasource.find(News.class).asList();
 		} catch (Exception e) {
-			System.out.println("error: " + e.getMessage());
 		}
-		System.out.println("sessionemail is:"+session("email"));
 		User user = User.findByEmail(session("email"));
 		return ok(index.render(newsList,user));
 	}
