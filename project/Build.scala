@@ -4,7 +4,7 @@ import play.Project._
 
 object Build extends sbt.Build {
 
-    val appName         = "filliHaber"
+    val appName         = "helloworldjava"
     val appVersion      = "1.0-SNAPSHOT"
 
     val appDependencies = Seq(
