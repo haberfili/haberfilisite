@@ -1,15 +1,47 @@
-@(message: String)
+@(signupForm: Form[_])
 
-@main("Neofili Haber Login",null) {
-<form class="navbar-form navbar-left" role="form" method="post" action="/signup">
+@import helper._
+@import helper.twitterBootstrap._
 
-				<div class="form-group">
-					<input type="text" placeholder="email" class="form-control" name="email">
-				</div>
-				<div class="form-group">
-					<input type="password" placeholder="password" class="form-control" name="password">
-				</div>
-				<button type="submit" class="btn btn-success">Sign up</button>
-</form>
+@main(Messages("playauthenticate.signup.title"),"signup") {
+    
+  <div class="row">
+    <div class="span6">
+      <h1>@Messages("playauthenticate.signup.title")</h1>
+    </div>
+  </div>
+
+  <div id="signup" class="row">
+
+    <div class="span3">
+        @* Display proprietary login form *@
+    	@helper.form(routes.Application.doSignup) {
+    	
+            @if(signupForm.hasGlobalErrors) { 
+                <p class="error">
+		            <span class="label label-important">@signupForm.globalError.message</span>
+		        </p>
+            }
+            
+             @inputText(
+                signupForm("name"),
+                '_label -> Messages("playauthenticate.signup.name")
+             )
+             
+             @_emailPartial(signupForm)
+             
+             @_passwordPartial(signupForm)
+
+            <input type="submit" value="@Messages("playauthenticate.signup.now")" class="btn btn-primary">
+    	}
+    </div>
+
+    <div class="span3">
+        @Messages("playauthenticate.signup.oauth")
+        @* Display list of available providers *@
+        @_providerPartial(skipCurrent=false)
+    </div>
+
+  </div>
 
 }

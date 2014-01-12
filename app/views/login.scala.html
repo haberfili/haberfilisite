@@ -1,35 +1,53 @@
-@(loginForm: Form[forms.Login],user:models.User)
-@import helper._
-@main("Neofili Haber Login",user: models.User) {
-    @if(loginForm.hasErrors) {
-        <div class="alert-message error">
-            <p><strong>Oops</strong> Please fix all errors</p>
-        </div>
-    }
-    
-    @helper.form(action = routes.LoginController.authenticate, 'id -> "loginForm") {
-        
-        <fieldset>
-            <legend>General information</legend>
-            
-            @inputText(
-                loginForm("email"), 
-                '_label -> "email"
-            )
-            
-            @inputText(
-                loginForm("password"), 
-                '_label -> "Password"
-            )
-            
-           
-        </fieldset>
-        
-        <div class="actions">
-            <input type="submit" class="btn primary" value="Insert">
-        </div>
-        
-    }
-    
+@(loginForm: Form[_])
 
+@import helper._
+@import helper.twitterBootstrap._
+
+@main(Messages("playauthenticate.login.title"),"login") {
+
+<div class="container">
+<div class="row">
+
+	<div class="col-lg-12">
+		<h2 class="page-header">@Messages("playauthenticate.login.title")</h2>
+	</div>      
+  <div class="col-sm-4">  
+
+    <div class="span3">
+      @* Display proprietary login form *@
+    	@helper.form(routes.Application.doLogin) {
+    	
+        @if(loginForm.hasGlobalErrors) { 
+          <p class="error">
+            <span class="label label-important">@loginForm.globalError.message</span>
+          </p>
+        }
+        
+        @_emailPartial(loginForm)
+          
+        @inputPassword(
+          loginForm("password"),
+          '_showConstraints -> false,
+          '_label -> Messages("playauthenticate.login.password.placeholder")
+        )
+          
+        <input type="submit" value="@Messages("playauthenticate.login.now")" class="btn btn-primary"><br/>
+        <br/>
+        <a href="javascript:void(0);" onclick="window.location.href = jsRoutes.controllers.Signup.forgotPassword($('#email').val() || null).absoluteURL();">@Messages("playauthenticate.login.forgot.password")</a>
+
+    	}
+    </div>
+     </div>
+ <div class="col-sm-4">  
+    
+      @Messages("playauthenticate.login.oauth")
+      <div>
+      @* Display list of available providers *@
+      @_providerPartial(skipCurrent=false)
+      </div>
+  </div>
+ 
+</div>
+  
+</div>
 }

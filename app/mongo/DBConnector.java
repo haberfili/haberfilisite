@@ -1,5 +1,7 @@
 package mongo;
 
+import java.net.UnknownHostException;
+
 import play.Play;
 import play.Plugin;
 import models.News;
@@ -13,8 +15,8 @@ import com.mongodb.ServerAddress;
 
 public class DBConnector {
 
-	public Datastore getDatasource() throws Exception {
-		Mongo mongo;
+	public Datastore getDatasource() {
+		Mongo mongo=null;
 		Datastore ds = null;
 		Morphia morphia;
 		String host=Play.application().configuration().getString("mongo.host");
@@ -22,7 +24,12 @@ public class DBConnector {
 		String database=Play.application().configuration().getString("mongo.database");
 		String username=Play.application().configuration().getString("mongo.username");
 		String password=Play.application().configuration().getString("mongo.password");
-		mongo = new MongoClient(new ServerAddress(host, port));
+		try {
+			mongo = new MongoClient(new ServerAddress(host, port));
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		morphia = new Morphia();
 //		morphia.map(News.class);
 		if(username == null){
