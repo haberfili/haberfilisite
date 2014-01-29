@@ -5,15 +5,17 @@
 
 @main(Messages("playauthenticate.signup.title"),"signup") {
     
-  <div class="row">
-    <div class="span6">
-      <h1>@Messages("playauthenticate.signup.title")</h1>
-    </div>
-  </div>
 
-  <div id="signup" class="row">
+    <div class="container">
+<div class="row">
+
+	<div class="col-lg-12">
+		<h2 class="page-header">@Messages("playauthenticate.signup.title")</h2>
+	</div>      
+  <div class="col-sm-4">  
 
     <div class="span3">
+    
         @* Display proprietary login form *@
     	@helper.form(routes.Application.doSignup) {
     	
@@ -35,6 +37,7 @@
             <input type="submit" value="@Messages("playauthenticate.signup.now")" class="btn btn-primary">
     	}
     </div>
+    </div>
 
     <div class="span3">
         @Messages("playauthenticate.signup.oauth")
@@ -43,5 +46,5 @@
     </div>
 
   </div>
-
+</div>
 }

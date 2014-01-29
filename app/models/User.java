@@ -120,7 +120,8 @@ public class User implements Subject {
 
 	public static User findByUsernamePasswordIdentity(
 			final UsernamePasswordAuthUser identity)  {
-		return getUsernamePasswordAuthUserFind(identity).get(0);
+		List<User> userList=getUsernamePasswordAuthUserFind(identity);
+		return userList.size()==0 ? null: userList.get(0);
 	}
 
 	private static List<User> getUsernamePasswordAuthUserFind(

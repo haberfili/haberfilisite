@@ -1,9 +1,13 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.ManyToOne;
+
+import mongo.DBConnector;
 
 import org.bson.types.ObjectId;
 
@@ -13,11 +17,13 @@ import play.db.ebean.Model;
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.QueryIterator;
 import com.avaje.ebean.annotation.EnumValue;
+import com.google.code.morphia.Datastore;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
+import com.google.code.morphia.query.Query;
 
 @Entity("tokenAction")
-public class TokenAction extends Model {
+public class TokenAction {
 
 	public enum Type {
 		@EnumValue("EV")
@@ -53,18 +59,23 @@ public class TokenAction extends Model {
 	@Formats.DateTime(pattern = "yyyy-MM-dd HH:mm:ss")
 	public Date expires;
 
-	public static final Finder<Long, TokenAction> find = new Finder<Long, TokenAction>(
-			Long.class, TokenAction.class);
+//	public static final Finder<Long, TokenAction> find = new Finder<Long, TokenAction>(
+//			Long.class, TokenAction.class);
 
 	public static TokenAction findByToken(final String token, final Type type) {
-		return find.where().eq("token", token).eq("type", type).findUnique();
+		
+		DBConnector connector= new DBConnector();
+		Datastore datasource = connector.getDatasource();
+		return datasource.find(TokenAction.class).field("token").equal( token)
+				.field("type").equal(type).get();
 	}
 
 	public static void deleteByUser(final User u, final Type type) {
-		QueryIterator<TokenAction> iterator = find.where()
-				.eq("targetUser.id", u.id).eq("type", type).findIterate();
-		Ebean.delete(iterator);
-		iterator.close();
+		DBConnector connector= new DBConnector();
+		Datastore datasource = connector.getDatasource();
+		Query<TokenAction> equal = datasource.find(TokenAction.class).field("targetUser.id").equal(u.id)
+		.field("type").equal(type);
+		datasource.delete(equal);
 	}
 
 	public boolean isValid() {
@@ -82,5 +93,10 @@ public class TokenAction extends Model {
 		ua.expires = new Date(created.getTime() + VERIFICATION_TIME * 1000);
 		ua.save();
 		return ua;
+	}
+	private void save()  {
+		DBConnector connector= new DBConnector();
+		Datastore datasource = connector.getDatasource();
+		datasource.save(this);
 	}
 }

@@ -9,10 +9,10 @@ import models.User;
 import mongo.DBConnector;
 import play.Routes;
 import play.data.Form;
+import play.i18n.Lang;
 import play.mvc.*;
 import play.mvc.Http.Response;
 import play.mvc.Http.Session;
-import play.mvc.Result;
 import providers.MyUsernamePasswordAuthProvider;
 import providers.MyUsernamePasswordAuthProvider.MyLogin;
 import providers.MyUsernamePasswordAuthProvider.MySignup;
@@ -33,6 +33,7 @@ public class Application extends Controller {
 	public static final String USER_ROLE = "user";
 	
 	public static Result index() throws Exception{
+//		changeLang("de");
 		List<News> newsList = null;
 		try {
 			DBConnector connector= new DBConnector();
