@@ -32,19 +32,6 @@ public class Language extends Controller {
 	public static final String FLASH_ERROR_KEY = "error";
 	public static final String USER_ROLE = "user";
 	
-	public static Result de() throws Exception{
-		
-		changeLang("de");
-		List<News> newsList = null;
-		try {
-			DBConnector connector= new DBConnector();
-			Datastore datasource = connector.getDatasource();
-			newsList = datasource.find(News.class).asList();
-		} catch (Exception e) {
-			throw e;
-		}
-		return ok(index.render(newsList));
-	}
 	public static Result en() throws Exception{
 		changeLang("en");
 		List<News> newsList = null;

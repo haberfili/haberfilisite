@@ -43,7 +43,6 @@ POST    /accounts/merge             controllers.Account.doMerge
 GET     /login/password/forgot     controllers.Signup.forgotPassword(email: String ?= "")
 POST    /login/password/forgot     controllers.Signup.doForgotPassword
 
-GET     /language/de                      controllers.Language.de
 GET     /language/en                      controllers.Language.en
 GET     /language/tr                      controllers.Language.tr
 
