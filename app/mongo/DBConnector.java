@@ -36,7 +36,7 @@ public class DBConnector {
 			ds = morphia.createDatastore(mongo, database);
 		}
 		else{
-			ds = morphia.createDatastore(mongo, database,username,password.toCharArray());			
+			ds = morphia.createDatastore(mongo, database,username,password.toCharArray());			 
 		}
 		return ds;
 	}
