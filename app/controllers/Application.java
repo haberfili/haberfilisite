@@ -36,7 +36,7 @@ public class Application extends Controller {
 //		changeLang("de");
 		List<News> newsList = null;
 		try {
-			DBConnector connector= new DBConnector();
+			DBConnector connector= new DBConnector(); 
 			Datastore datasource = connector.getDatasource();
 			newsList = datasource.find(News.class).order("createDate").limit(50).asList(); 
 		} catch (Exception e) {
