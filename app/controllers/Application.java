@@ -38,7 +38,7 @@ public class Application extends Controller {
 		try {
 			DBConnector connector= new DBConnector(); 
 			Datastore datasource = connector.getDatasource();
-			newsList = datasource.find(News.class).order("createDate").limit(50).asList(); 
+			newsList = datasource.find(News.class).order("- createDate").limit(50).asList(); 
 		} catch (Exception e) {
 			throw e;
 		}

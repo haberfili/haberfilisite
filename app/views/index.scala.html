@@ -13,17 +13,19 @@
 
 <div class="container">
 	<!-- Example row of columns -->
-	<div class="row">
+	
 	<div class="col-lg-12">
 		<h2 class="page-header">Your News</h2>
 	</div>
-	@for(news <- newsList) {
-		<div class="col-sm-4">
-			<img class="img-responsive" src="@news.image" >
-			<h3>@news.title <small>ntvmsnbc.com</small> </h3>
-			<p>@news.detail</p>
+	<div class="row clearfix" >
+	
+	@for(i <-0 to newsList.size()-1) {
+	<div class="col-sm-3 clearfix">	
+			<img class="img-responsive" src="@newsList.get(i).image" >
+			<h3>@newsList.get(i).title <small>ntvmsnbc.com</small> </h3>
+			<p>@newsList.get(i).detail</p>
 			<ul class="list-unstyled list-inline list-social-icons">
-              <a class="btn btn-default" target="_blank" href="@news.link" role="button">Detay&raquo;</a>
+              <a class="btn btn-default" target="_blank" href="@newsList.get(i).link" role="button">Detay&raquo;</a>
               <li class="tooltip-social facebook-link">
               	<a href="#facebook-profile" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
               	<i class="fa fa-facebook-square fa-2x"></i>
@@ -34,9 +36,9 @@
             </ul>
 			
 			
-			
-		</div>
+	</div>		
 	}
+	
 	</div>
 
 	<hr>
