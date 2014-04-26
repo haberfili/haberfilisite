@@ -8,7 +8,7 @@ import com.google.code.morphia.annotations.Id;
 @Entity("news")
 public class News  {
 	 @Id ObjectId id;
-	 public String title,detail,link,image;
+	 public String title,detail,link,image,source;
 	 public long createDate;
  
 

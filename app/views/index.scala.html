@@ -21,8 +21,8 @@
 	
 	@for(i <-0 to newsList.size()-1) {
 	<div class="col-sm-3 clearfix">	
-			<img class="img-responsive" src="@newsList.get(i).image" >
-			<h3>@newsList.get(i).title <small>ntvmsnbc.com</small> </h3>
+			<img height="100" width="120" src="@newsList.get(i).image" >
+			<h3>@newsList.get(i).title <small>@newsList.get(i).source</small> </h3>
 			<p>@newsList.get(i).detail</p>
 			<ul class="list-unstyled list-inline list-social-icons">
               <a class="btn btn-default" target="_blank" href="@newsList.get(i).link" role="button">Detay&raquo;</a>
