@@ -1,5 +1,8 @@
 @(news : models.News) 
 @main(Messages("playauthenticate.index.title")) {
+<meta property="og:title" content="@news.title" />
+<meta property="og:description" content="@news.detail" />
+<meta property="og:image" content="@news.image" />
    <div class="jumbotron">
 	<div class="container">
 		<h1>HaberFili</h1>
