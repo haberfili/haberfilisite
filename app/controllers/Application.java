@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.bson.types.ObjectId;
+
 import models.News;
 import models.User;
 import mongo.DBConnector;
@@ -16,7 +18,6 @@ import play.mvc.Http.Session;
 import providers.MyUsernamePasswordAuthProvider;
 import providers.MyUsernamePasswordAuthProvider.MyLogin;
 import providers.MyUsernamePasswordAuthProvider.MySignup;
-
 import views.html.*;
 import be.objectify.deadbolt.java.actions.Group;
 import be.objectify.deadbolt.java.actions.Restrict;
@@ -43,6 +44,17 @@ public class Application extends Controller {
 			throw e;
 		}
 		return ok(index.render(newsList));
+	}
+	public static Result viewNews(String newsId) throws Exception{
+		News news = null;
+		try {
+			DBConnector connector= new DBConnector(); 
+			Datastore datasource = connector.getDatasource();
+			news =datasource.get(News.class, new ObjectId(newsId));
+		} catch (Exception e) {
+			throw e;
+		}
+		return ok(onenews.render(news));
 	}
 
 	public static User getLocalUser(final Session session) {

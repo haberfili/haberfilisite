@@ -1,4 +1,4 @@
-@(newsList : java.util.List[models.News]) 
+@(news : models.News) 
 @main(Messages("playauthenticate.index.title")) {
    <div class="jumbotron">
 	<div class="container">
@@ -19,27 +19,29 @@
 	</div>
 	<div class="row clearfix" >
 	
-	@for(i <-0 to newsList.size()-1) {
-	<div class="col-sm-3 clearfix">	
-			<img height="100" width="120" src="@newsList.get(i).image" >
-			<h3>@newsList.get(i).title <small>@newsList.get(i).source</small> </h3>
-			<p>@newsList.get(i).detail</p>
+	<div class="col-sm-12 clearfix">	
+			<img height="100" width="120" src="@news.image" >
+			<h3>@news.title <small>@news.source</small> </h3>
+			<p>@news.detail</p>
 			<ul class="list-unstyled list-inline list-social-icons">
-              <a class="btn btn-default" target="_blank" href="@newsList.get(i).link" role="button">Detay&raquo;</a>
+              <a class="btn btn-default" target="_blank" href="@news.link" role="button">Detay&raquo;</a>
               <li class="tooltip-social facebook-link">
               	<a href="#facebook-profile" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
               	<i class="fa fa-facebook-square fa-2x"></i>
               	</a>
               </li>
+              <span class='st_facebook_large' data-width="%20" data-href="https://developers.facebook.com/docs/plugins/"  displayText='Facebook'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st_googleplus_large' displayText='Google +'></span>
               <li class="tooltip-social twitter-link"><a href="#twitter-profile" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter"><i class="fa fa-twitter-square fa-2x"></i></a></li>
               <li class="tooltip-social google-plus-link"><a href="#google-plus-profile" data-toggle="tooltip" data-placement="top" title="Google+"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
-              <li> <div class="fb-share-button" data-href="http://www.haberfili.com/content/@newsList.get(i).id" title="Share on facebook" data-width="%20" data-type="icon"></div>
+             <li> <div class="fb-share-button" data-href="http://www.haberfili.com/" title="asaddasda" data-width="%20" data-type="icon">
+             <meta name=”description” content=”This is the description of my webpage that I really want to have shared on Facebook!” /></div>
             </li>
             </ul>
 			
 			
 	</div>		
-	}
 	
 	</div>
 
