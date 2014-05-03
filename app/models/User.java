@@ -250,9 +250,10 @@ public class User implements Subject {
 
 	public void changePassword(final UsernamePasswordAuthUser authUser,
 			final boolean create) {
-		LinkedAccount a = this.getAccountByProvider(authUser.getProvider());
+		LinkedAccount a = this.getAccountByProvider("password");
 		if (a == null) {
 			if (create) {
+				System.out.println("creating..");
 				a = LinkedAccount.create(authUser);
 				a.user = this;
 			} else {
@@ -261,6 +262,12 @@ public class User implements Subject {
 			}
 		}
 		a.providerUserId = authUser.getHashedPassword();
+		for(LinkedAccount account :this.linkedAccounts){
+			if("password".equals(account.providerKey)){
+				account.providerUserId=authUser.getHashedPassword();
+			}
+		}
+		this.save();
 		a.save();
 	}
 

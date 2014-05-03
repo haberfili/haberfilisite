@@ -3,8 +3,18 @@
 @import com.feth.play.module.pa.views.html._
 
 @main(Messages("playauthenticate.profile.title"),"profile") {
+<div class="container">
+<div class="row">
 
-    <h1>@Messages("playauthenticate.profile.title")</h1>
+	<div class="col-lg-12">
+		<h2 class="page-header">@Messages("playauthenticate.profile.title")</h2>
+	</div>      
+  <div class="col-sm-4">  
+
+    <div class="span3">
+    <ul>
+    	<li><a href="@routes.Account.changePassword">@Messages("playauthenticate.profile.password_change")</a></li>
+    </ul>
     <p>
     Your name is @localUser.name and your email address is @if(!localUser.email) {<em>&lt;unknown&gt;</em>.} else {
     	@localUser.email.
@@ -44,8 +54,9 @@
         }
     }
     <br/>
-    <ul>
-    	<li><a href="@routes.Account.changePassword">@Messages("playauthenticate.profile.password_change")</a></li>
-    </ul>
     </p>
+    </div>
+    </div>
+    </div>
+    </div>
 }

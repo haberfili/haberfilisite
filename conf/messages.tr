@@ -91,8 +91,8 @@ playauthenticate.link.account.ok=OK
 # play-authenticate: Signup folder translations
 
 playauthenticate.verify.email.title=Verify your e-mail
-playauthenticate.verify.email.requirement=Before you can use PlayAuthenticate, you first need to verify your e-mail address.
-playauthenticate.verify.email.cta=An e-mail has been sent to the registered address. Please follow the embedded link to activate your account.
+playauthenticate.verify.email.requirement=Haberfili'yi kullanmaya başlamadan önce e-mail adresinizi doğrulamanız gerekmektedir.
+playauthenticate.verify.email.cta=E-mail adresinize bununla ilgili mail gönderilmiştir. Lütfen mailinizdeki bağlantıyı kullanarak mail adresinizi doğrulayınız.
 
 playauthenticate.password.reset.title=Reset password
 playauthenticate.password.reset.cta=Reset my password

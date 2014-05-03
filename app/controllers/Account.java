@@ -127,7 +127,8 @@ public class Account extends Controller {
 		} else {
 			final User user = Application.getLocalUser(session());
 			final String newPassword = filledForm.get().password;
-			user.changePassword(new MyUsernamePasswordAuthUser(newPassword),
+			MyUsernamePasswordAuthUser authUser = new MyUsernamePasswordAuthUser(newPassword);
+			user.changePassword(authUser,
 					true);
 			flash(Application.FLASH_MESSAGE_KEY,
 					Messages.get("playauthenticate.change_password.success"));

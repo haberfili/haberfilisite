@@ -31,7 +31,7 @@ public class LinkedAccount {
 	public static LinkedAccount findByProviderKey(final User user, String key) {
 		DBConnector connector= new DBConnector();
 		Datastore datasource = connector.getDatasource();
-		return datasource.find(LinkedAccount.class).field("user").equal(user).field("providerKey").equal( key).get();
+		return datasource.find(LinkedAccount.class).field("user.email").equal(user.email).field("providerKey").equal( key).get();
 	}
 
 	public static LinkedAccount create(final AuthUser authUser) {
