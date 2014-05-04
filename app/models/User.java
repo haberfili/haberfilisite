@@ -66,6 +66,7 @@ public class User implements Subject {
 	public List<LinkedAccount> linkedAccounts;
 
 	public List<UserPermission> permissions;
+	public List<String> sources;
 
 //	public static final Finder<Long, User> find = new Finder<Long, User>(
 //			Long.class, User.class);

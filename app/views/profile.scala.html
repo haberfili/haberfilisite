@@ -12,9 +12,26 @@
   <div class="col-sm-4">  
 
     <div class="span3">
+    
+     <div class="checkbox">
+  		<label>
+    		<input id="ntvmsnbc.com" type="checkbox" value="true">
+    			ntvmsnbc.com
+  		</label>
+	</div>
+	
+	<div class="checkbox">
+  		<label>
+    		<input id="radikal.com.tr" type="checkbox" value="">
+    		radikal.com.tr
+  		</label>
+	</div>
+    
+    
     <ul>
     	<li><a href="@routes.Account.changePassword">@Messages("playauthenticate.profile.password_change")</a></li>
     </ul>
+  
     <p>
     Your name is @localUser.name and your email address is @if(!localUser.email) {<em>&lt;unknown&gt;</em>.} else {
     	@localUser.email.

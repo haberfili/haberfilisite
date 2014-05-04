@@ -37,9 +37,15 @@ public class Application extends Controller {
 //		changeLang("de");
 		List<News> newsList = null;
 		try {
+			
+			final User localUser = getLocalUser(session());
 			DBConnector connector= new DBConnector(); 
 			Datastore datasource = connector.getDatasource();
-			newsList = datasource.find(News.class).order("- createDate").limit(50).asList(); 
+			if(localUser==null || localUser.sources==null || localUser.sources.size()==0|| localUser.sources.size()==2){
+				newsList = datasource.find(News.class).order("- createDate").limit(50).asList(); 
+			}else{
+				newsList = datasource.find(News.class).filter("source in", localUser.sources).order("- createDate").limit(50).asList();
+			}
 		} catch (Exception e) {
 			throw e;
 		}
