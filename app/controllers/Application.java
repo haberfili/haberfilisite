@@ -122,10 +122,12 @@ public class Application extends Controller {
 			// signup
 			return UsernamePasswordAuthProvider.handleSignup(ctx());
 		}
-	}
+	} 
 
 	public static String formatTimestamp(final long t) {
 		return new SimpleDateFormat("yyyy-dd-MM HH:mm:ss").format(new Date(t));
 	}
-
+	public static Result whatis() throws Exception{
+		return ok(whatis.render()); 
+	}
 }

@@ -147,3 +147,10 @@ playauthenticate.index.details=View details
 playauthenticate.restricted.secrets=Secrets, everywhere!
 
 ### --- play-authenticate END
+haberfili.subtitle=Personalized News Website
+haberfili.whatis=What is HaberFili?
+haberfili.news=News
+haberfili.whatis.firstLine= HaberFili is a new website which serves personalized news via many different news sources.
+haberfili.whatis.secondLine= You can view latest news and share on social networks without login. When you login you can choose news sources that you enjoy.
+haberfili.whatis.thirdLine= We appreciate you taking the time.
+haberfili.team= HaberFili team.
