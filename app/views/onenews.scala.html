@@ -124,11 +124,11 @@
 </div>
 </body>
        <div class="jumbotron">
-	<div class="container">
-		<h1>HaberFili</h1>
-		<p>Kisisel Haber Sitesi</p>
+		<div class="container">
+		 <h1><img class="img-responsive" src="@routes.Assets.at("icons/haberfili.png")" ></h1>
+		<p>@Messages("haberfili.subtitle")</p>
 		<p>
-			<a class="btn btn-primary btn-lg" role="button">Haberfili Nedir?
+			<a class="btn btn-primary btn-lg" href="/whatis" role="button">@Messages("haberfili.whatis")
 				&raquo;</a>
 		</p>
 	</div>
@@ -136,14 +136,10 @@
 
 <div class="container">
 	<!-- Example row of columns -->
-	
-	<div class="col-lg-12">
-		<h2 class="page-header">Your News</h2>
-	</div>
 	<div class="row clearfix" >
 	
 	<div class="col-sm-12 clearfix">	
-			<img height="100" width="120" src="@news.image" >
+			<img class="img-rounded" height="100" width="120" src="@news.image" >
 			<h3>@news.title <small>@news.source</small> </h3>
 			<p>@news.detail</p>
 			 <a class="btn btn-default" target="_blank" href="@news.link" role="button">Detay&raquo;</a>
