@@ -100,8 +100,8 @@ public class Application extends Controller {
 				radikalcomtr="notChecked";
 			}
 		}
-		return ok(profile.render(localUser,ntvmsnbccom,radikalcomtr,hurriyetcomtr));
-	}
+		return ok(profile.render(localUser,ntvmsnbccom,radikalcomtr,hurriyetcomtr)); 
+	} 
 	
 	@Restrict(@Group(Application.USER_ROLE))
 	public static Result saveProfile() {
