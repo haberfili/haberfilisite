@@ -1,4 +1,4 @@
-@(localUser: models.User = null)
+@(localUser: models.User = null,ntvmsnbccom:String,radikalcomtr:String)
 
 @import com.feth.play.module.pa.views.html._
 
@@ -10,23 +10,24 @@
 		<h2 class="page-header">@Messages("playauthenticate.profile.title")</h2>
 	</div>      
   <div class="col-sm-4">  
-
+  
+	<form action="/profile" method="POST" >
     <div class="span3">
     
      <div class="checkbox">
   		<label>
-    		<input id="ntvmsnbc.com" type="checkbox" value="true">
+    		<input id="ntvmsnbc.com"  name="ntvmsnbc.com" type="checkbox"  @if("checked" == ntvmsnbccom){checked="checked"} >
     			ntvmsnbc.com
   		</label>
 	</div>
 	
 	<div class="checkbox">
   		<label>
-    		<input id="radikal.com.tr" type="checkbox" value="">
+    		<input type="checkbox" id="radikal.com.tr" name="radikal.com.tr"  @if("checked" == radikalcomtr){checked="checked"} />
     		radikal.com.tr
   		</label>
 	</div>
-    
+    <input type="submit" value="Kaydet" class="btn btn-primary"><br/>
     
     <ul>
     	<li><a href="@routes.Account.changePassword">@Messages("playauthenticate.profile.password_change")</a></li>
@@ -73,6 +74,7 @@
     <br/>
     </p>
     </div>
+    </form>
     </div>
     </div>
     </div>

@@ -124,7 +124,7 @@ playauthenticate.navigation.signup=Sign up
 playauthenticate.handler.loginfirst=You need to log in first, to view ''{0}''
 
 # play-authenticate: Profile
-playauthenticate.profile.title=User profile
+playauthenticate.profile.title=Profil
 playauthenticate.profile.mail=Your name is {0} and your email address is {1}!
 playauthenticate.profile.unverified=unverified - click to verify
 playauthenticate.profile.verified=verified

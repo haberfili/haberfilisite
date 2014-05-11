@@ -8,6 +8,7 @@ GET     /restricted                 controllers.Application.restricted
 GET     /assets/javascript/routes.js    controllers.Application.jsRoutes
 
 GET     /profile                    controllers.Application.profile
+POST    /profile                    controllers.Application.saveProfile
 
 GET     /login                      controllers.Application.login
 POST    /login                      controllers.Application.doLogin

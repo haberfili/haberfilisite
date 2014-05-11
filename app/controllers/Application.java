@@ -1,24 +1,32 @@
 package controllers;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import org.bson.types.ObjectId;
+import java.util.Map;
 
 import models.News;
 import models.User;
 import mongo.DBConnector;
+
+import org.bson.types.ObjectId;
+
 import play.Routes;
 import play.data.Form;
-import play.i18n.Lang;
-import play.mvc.*;
-import play.mvc.Http.Response;
+import play.mvc.Controller;
 import play.mvc.Http.Session;
+import play.mvc.Result;
 import providers.MyUsernamePasswordAuthProvider;
 import providers.MyUsernamePasswordAuthProvider.MyLogin;
 import providers.MyUsernamePasswordAuthProvider.MySignup;
-import views.html.*;
+import views.html.index;
+import views.html.login;
+import views.html.onenews;
+import views.html.profile;
+import views.html.restricted;
+import views.html.signup;
+import views.html.whatis;
 import be.objectify.deadbolt.java.actions.Group;
 import be.objectify.deadbolt.java.actions.Restrict;
 
@@ -78,7 +86,48 @@ public class Application extends Controller {
 	@Restrict(@Group(Application.USER_ROLE))
 	public static Result profile() {
 		final User localUser = getLocalUser(session());
-		return ok(profile.render(localUser));
+		String radikalcomtr="checked";
+		String ntvmsnbccom="checked";
+		if(localUser.sources!=null && localUser.sources.size()>0){
+			if(!localUser.sources.contains("ntvmsnbc.com")){
+				ntvmsnbccom="notChecked";
+			}
+			if(!localUser.sources.contains("radikal.com.tr")){
+				radikalcomtr="notChecked";
+			}
+		}
+		return ok(profile.render(localUser,ntvmsnbccom,radikalcomtr));
+	}
+	
+	@Restrict(@Group(Application.USER_ROLE))
+	public static Result saveProfile() {
+		
+		 final Map<String, String[]> values = request().body().asFormUrlEncoded();
+		 User localUser = getLocalUser(session());
+		 String ntvmsnbccom = null;
+		 if(values.get("ntvmsnbc.com")!=null){
+			 ntvmsnbccom =values.get("ntvmsnbc.com")[0];
+		 }
+		 String radikalcomtr = null;
+		 if(values.get("radikal.com.tr")!=null){
+			 radikalcomtr =values.get("radikal.com.tr")[0];
+		 }
+		 if(ntvmsnbccom!=null || radikalcomtr!=null){
+			 List<String> sources=new ArrayList<String>();
+			 if(ntvmsnbccom!=null){
+				 sources.add("ntvmsnbc.com");
+			 }
+			 if(radikalcomtr!=null){
+				 sources.add("radikal.com.tr");
+			 }
+			 if(sources.size()!=0){
+				localUser.sources=sources;
+				DBConnector connector= new DBConnector();
+				Datastore datasource = connector.getDatasource();
+				datasource.save(localUser);
+			 }
+		 }
+		return redirect(routes.Application.profile());
 	}
 
 	public static Result login() {
