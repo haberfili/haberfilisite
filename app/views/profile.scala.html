@@ -1,4 +1,4 @@
-@(localUser: models.User = null,ntvmsnbccom:String,radikalcomtr:String)
+@(localUser: models.User = null,ntvmsnbccom:String,radikalcomtr:String,hurriyetcomtr:String)
 
 @import com.feth.play.module.pa.views.html._
 
@@ -25,6 +25,12 @@
   		<label>
     		<input type="checkbox" id="radikal.com.tr" name="radikal.com.tr"  @if("checked" == radikalcomtr){checked="checked"} />
     		radikal.com.tr
+  		</label>
+	</div>
+	<div class="checkbox">
+  		<label>
+    		<input type="checkbox" id="hurriyet.com.tr" name="hurriyet.com.tr"  @if("checked" == hurriyetcomtr){checked="checked"} />
+    		hurriyet.com.tr
   		</label>
 	</div>
     <input type="submit" value="Kaydet" class="btn btn-primary"><br/>

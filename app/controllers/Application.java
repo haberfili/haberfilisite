@@ -49,7 +49,7 @@ public class Application extends Controller {
 			final User localUser = getLocalUser(session());
 			DBConnector connector= new DBConnector(); 
 			Datastore datasource = connector.getDatasource();
-			if(localUser==null || localUser.sources==null || localUser.sources.size()==0|| localUser.sources.size()==2){
+			if(localUser==null || localUser.sources==null || localUser.sources.size()==0|| localUser.sources.size()==3){
 				newsList = datasource.find(News.class).order("- createDate").limit(50).asList(); 
 			}else{
 				newsList = datasource.find(News.class).filter("source in", localUser.sources).order("- createDate").limit(50).asList();
@@ -88,15 +88,19 @@ public class Application extends Controller {
 		final User localUser = getLocalUser(session());
 		String radikalcomtr="checked";
 		String ntvmsnbccom="checked";
+		String hurriyetcomtr="checked";
 		if(localUser.sources!=null && localUser.sources.size()>0){
 			if(!localUser.sources.contains("ntvmsnbc.com")){
 				ntvmsnbccom="notChecked";
+			}
+			if(!localUser.sources.contains("hurriyet.com.tr")){
+				hurriyetcomtr="notChecked";
 			}
 			if(!localUser.sources.contains("radikal.com.tr")){
 				radikalcomtr="notChecked";
 			}
 		}
-		return ok(profile.render(localUser,ntvmsnbccom,radikalcomtr));
+		return ok(profile.render(localUser,ntvmsnbccom,radikalcomtr,hurriyetcomtr));
 	}
 	
 	@Restrict(@Group(Application.USER_ROLE))
@@ -108,14 +112,21 @@ public class Application extends Controller {
 		 if(values.get("ntvmsnbc.com")!=null){
 			 ntvmsnbccom =values.get("ntvmsnbc.com")[0];
 		 }
+		 String hurriyetcomtr=null;
+		 if(values.get("hurriyet.com.tr")!=null){
+			 hurriyetcomtr =values.get("hurriyet.com.tr")[0];
+		 }
 		 String radikalcomtr = null;
 		 if(values.get("radikal.com.tr")!=null){
 			 radikalcomtr =values.get("radikal.com.tr")[0];
 		 }
-		 if(ntvmsnbccom!=null || radikalcomtr!=null){
+		 if(ntvmsnbccom!=null || radikalcomtr!=null|| hurriyetcomtr!=null){
 			 List<String> sources=new ArrayList<String>();
 			 if(ntvmsnbccom!=null){
 				 sources.add("ntvmsnbc.com");
+			 }
+			 if(hurriyetcomtr!=null){
+				 sources.add("hurriyet.com.tr");
 			 }
 			 if(radikalcomtr!=null){
 				 sources.add("radikal.com.tr");
