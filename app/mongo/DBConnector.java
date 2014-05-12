@@ -14,10 +14,12 @@ import com.mongodb.MongoClient;
 import com.mongodb.ServerAddress;
 
 public class DBConnector {
-
-	public Datastore getDatasource() {
+	
+	private static Datastore ds;
+	public static Datastore getDatasource() {
+		if (ds == null) {
+		
 		Mongo mongo=null;
-		Datastore ds = null;
 		Morphia morphia;
 		String host=Play.application().configuration().getString("mongo.host");
 		Integer port = Play.application().configuration().getInt("mongo.port");
@@ -37,6 +39,7 @@ public class DBConnector {
 		}
 		else{
 			ds = morphia.createDatastore(mongo, database,username,password.toCharArray());			 
+		}
 		}
 		return ds;
 	}

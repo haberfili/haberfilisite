@@ -36,8 +36,7 @@ public class Language extends Controller {
 		changeLang("en");
 		List<News> newsList = null;
 		try {
-			DBConnector connector= new DBConnector();
-			Datastore datasource = connector.getDatasource();
+			Datastore datasource = DBConnector.getDatasource();
 			newsList = datasource.find(News.class).asList();
 		} catch (Exception e) {
 			throw e;
@@ -48,8 +47,7 @@ public class Language extends Controller {
 		changeLang("tr");
 		List<News> newsList = null;
 		try {
-			DBConnector connector= new DBConnector();
-			Datastore datasource = connector.getDatasource();
+			Datastore datasource = DBConnector.getDatasource();
 			newsList = datasource.find(News.class).asList();
 		} catch (Exception e) {
 			throw e;

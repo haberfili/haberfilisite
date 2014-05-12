@@ -29,8 +29,7 @@ public class LinkedAccount {
 //			Long.class, LinkedAccount.class);
 
 	public static LinkedAccount findByProviderKey(final User user, String key) {
-		DBConnector connector= new DBConnector();
-		Datastore datasource = connector.getDatasource();
+		Datastore datasource = DBConnector.getDatasource();
 		return datasource.find(LinkedAccount.class).field("user.email").equal(user.email).field("providerKey").equal( key).get();
 	}
 
@@ -53,8 +52,7 @@ public class LinkedAccount {
 		return ret;
 	}
 	public void save()  {
-		DBConnector connector= new DBConnector();
-		Datastore datasource = connector.getDatasource();
+		Datastore datasource = DBConnector.getDatasource();
 		datasource.save(this);
 	}
 }

@@ -47,8 +47,7 @@ public class Application extends Controller {
 		try {
 			
 			final User localUser = getLocalUser(session());
-			DBConnector connector= new DBConnector(); 
-			Datastore datasource = connector.getDatasource();
+			Datastore datasource = DBConnector.getDatasource();
 			if(localUser==null || localUser.sources==null || localUser.sources.size()==0|| localUser.sources.size()==3){
 				newsList = datasource.find(News.class).order("- createDate").limit(50).asList(); 
 			}else{
@@ -62,8 +61,7 @@ public class Application extends Controller {
 	public static Result viewNews(String newsId) throws Exception{
 		News news = null;
 		try {
-			DBConnector connector= new DBConnector(); 
-			Datastore datasource = connector.getDatasource();
+			Datastore datasource = DBConnector.getDatasource();
 			news =datasource.get(News.class, new ObjectId(newsId));
 		} catch (Exception e) {
 			throw e;
@@ -133,8 +131,7 @@ public class Application extends Controller {
 			 }
 			 if(sources.size()!=0){
 				localUser.sources=sources;
-				DBConnector connector= new DBConnector();
-				Datastore datasource = connector.getDatasource();
+				Datastore datasource = DBConnector.getDatasource();
 				datasource.save(localUser);
 			 }
 		 }

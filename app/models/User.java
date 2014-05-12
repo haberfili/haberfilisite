@@ -100,8 +100,7 @@ public class User implements Subject {
 
 	private static List<User> getAuthUserFind(
 			final AuthUserIdentity identity)  {
-		DBConnector connector= new DBConnector();
-		Datastore datasource = connector.getDatasource();
+		Datastore datasource = DBConnector.getDatasource();
 		return datasource.find(User.class).field("active").equal( true)
 				.field("linkedAccounts.providerUserId").equal(identity.getId())
 				.field("linkedAccounts.providerKey").equal(identity.getProvider()).asList();
@@ -217,8 +216,7 @@ public class User implements Subject {
 	}
 
 	private void save()  {
-		DBConnector connector= new DBConnector();
-		Datastore datasource = connector.getDatasource();
+		Datastore datasource = DBConnector.getDatasource();
 		List<SecurityRole> roles=new ArrayList<SecurityRole>();
 		SecurityRole role= new SecurityRole();
 		role.roleName="user";
@@ -232,8 +230,7 @@ public class User implements Subject {
 	}
 
 	private static Query<User> getEmailUserFind(final String email) {
-		DBConnector connector= new DBConnector();
-		Datastore datasource = connector.getDatasource();
+		Datastore datasource = DBConnector.getDatasource();
 		return datasource.find(User.class).field("active").equal( true).field("email").equal( email);
 	}
 

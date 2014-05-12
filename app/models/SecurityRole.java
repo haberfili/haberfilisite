@@ -48,14 +48,12 @@ public class SecurityRole implements Role {
 
 	public static SecurityRole findByRoleName(String roleName) {
 		System.out.println("!!!roleName is : "+roleName);
-		DBConnector connector= new DBConnector();
-		Datastore datasource = connector.getDatasource();
+		Datastore datasource = DBConnector.getDatasource();
 		return datasource.find(SecurityRole.class).field("roleName").equal(roleName).get();
 	}
 	
 	public void save(){
-		DBConnector connector= new DBConnector();
-		Datastore datasource = connector.getDatasource();
+		Datastore datasource = DBConnector.getDatasource();
 		datasource.save(this);
 	}
 }

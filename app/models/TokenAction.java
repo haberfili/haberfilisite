@@ -64,15 +64,13 @@ public class TokenAction {
 
 	public static TokenAction findByToken(final String token, final Type type) {
 		
-		DBConnector connector= new DBConnector();
-		Datastore datasource = connector.getDatasource();
+		Datastore datasource = DBConnector.getDatasource();
 		return datasource.find(TokenAction.class).field("token").equal( token)
 				.field("type").equal(type).get();
 	}
 
 	public static void deleteByUser(final User u, final Type type) {
-		DBConnector connector= new DBConnector();
-		Datastore datasource = connector.getDatasource();
+		Datastore datasource = DBConnector.getDatasource();
 		Query<TokenAction> equal = datasource.find(TokenAction.class).field("targetUser.id").equal(u.id)
 		.field("type").equal(type);
 		datasource.delete(equal);
@@ -95,8 +93,7 @@ public class TokenAction {
 		return ua;
 	}
 	private void save()  {
-		DBConnector connector= new DBConnector();
-		Datastore datasource = connector.getDatasource();
+		Datastore datasource = DBConnector.getDatasource();
 		datasource.save(this);
 	}
 }
