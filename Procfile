@@ -1,2 +1,2 @@
-web:    java -cp target/universal/stage/bin/* -Xmx380M
+web:  target/universal/stage/bin/* -Xmx380M
 
