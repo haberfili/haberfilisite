@@ -1,2 +1,2 @@
-web:    java -cp target/classes:target/dependency/* helloworldjava -Xmx380M
+web:    java -cp target/universal/stage/bin/* -Xmx380M
 
