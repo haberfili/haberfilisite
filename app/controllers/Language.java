@@ -36,19 +36,35 @@ public class Language extends Controller {
 		changeLang("en");
 		List<News> newsList = null;
 		try {
+			
+			final User localUser = getLocalUser(session());
 			Datastore datasource = DBConnector.getDatasource();
-			newsList = datasource.find(News.class).asList();
+			if(localUser==null || localUser.sources==null || localUser.sources.size()==0|| localUser.sources.size()==3){
+				newsList = datasource.find(News.class).order("- createDate").limit(50).asList(); 
+			}else{
+				newsList = datasource.find(News.class).filter("source in", localUser.sources).order("- createDate").limit(50).asList();
+			}
 		} catch (Exception e) {
 			throw e;
 		}
 		return ok(index.render(newsList));
 	}
+	public static User getLocalUser(final Session session) {
+		final AuthUser currentAuthUser = PlayAuthenticate.getUser(session);
+		final User localUser = User.findByAuthUserIdentity(currentAuthUser);
+		return localUser;
+	}
 	public static Result tr() throws Exception{
 		changeLang("tr");
 		List<News> newsList = null;
 		try {
+			final User localUser = getLocalUser(session());
 			Datastore datasource = DBConnector.getDatasource();
-			newsList = datasource.find(News.class).asList();
+			if(localUser==null || localUser.sources==null || localUser.sources.size()==0|| localUser.sources.size()==3){
+				newsList = datasource.find(News.class).order("- createDate").limit(50).asList(); 
+			}else{
+				newsList = datasource.find(News.class).filter("source in", localUser.sources).order("- createDate").limit(50).asList();
+			}
 		} catch (Exception e) {
 			throw e;
 		}
