@@ -65,6 +65,9 @@ public class Application extends Controller {
 		try {
 			Datastore datasource = DBConnector.getDatasource();
 			news =datasource.get(News.class, new ObjectId(newsId));
+			if(news.detail.indexOf("...")!=-1){
+				news.detail=news.detail.replace("...", "");
+			}
 			List<News> allNewsList = datasource.find(News.class).order("- createDate").limit(40).asList();
 			Random  random= new Random();
 			while(newsList.size()<5){
