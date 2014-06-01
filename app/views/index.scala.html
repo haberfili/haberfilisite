@@ -23,11 +23,11 @@
 	@for(i <-0 to newsList.size()-1) {
 	<div class="col-sm-3 clearfix">	
 	<div>
-			<a target="_blank" href="/content/@newsList.get(i).id" >
+			<a target="" href="/content/@newsList.get(i).id" >
 			<img class="img-rounded" alt="@newsList.get(i).title" height="100" width="150" src="@newsList.get(i).image" >
 			</a></div>
 			<div>
-			<a target="_blank" href="@newsList.get(i).link" >
+			<a target="" href="/content/@newsList.get(i).id" >
 			<h3 >@newsList.get(i).title <small>@newsList.get(i).source</small> </h3>
 			</a></div>
 				<p>@newsList.get(i).detail</p></a>

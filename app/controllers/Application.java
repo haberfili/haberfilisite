@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import models.News;
 import models.User;
@@ -60,13 +61,20 @@ public class Application extends Controller {
 	}
 	public static Result viewNews(String newsId) throws Exception{
 		News news = null;
+		List<News> newsList=new ArrayList<News>();
 		try {
 			Datastore datasource = DBConnector.getDatasource();
 			news =datasource.get(News.class, new ObjectId(newsId));
+			List<News> allNewsList = datasource.find(News.class).order("- createDate").limit(40).asList();
+			Random  random= new Random();
+			while(newsList.size()<5){
+				int randomNewsId=random.nextInt(allNewsList.size()-1);
+				newsList.add(allNewsList.get(randomNewsId));
+			}
 		} catch (Exception e) {
 			throw e;
 		}
-		return ok(onenews.render(news));
+		return ok(onenews.render(news,newsList));
 	}
 
 	public static User getLocalUser(final Session session) {
