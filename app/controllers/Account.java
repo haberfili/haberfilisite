@@ -23,7 +23,7 @@ import static play.data.Form.form;
 
 public class Account extends Controller {
 
-	public static class Accept {
+	public static class Accept { 
 
 		@Required
 		@NonEmpty
