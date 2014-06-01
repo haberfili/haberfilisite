@@ -51,3 +51,4 @@ GET     /language/tr                      controllers.Language.tr
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET     /content/:newsId     controllers.Application.viewNews(newsId: String)
 GET     /whatis                      controllers.Application.whatis
+GET     /page/:page                      controllers.Application.indexPaginated(page:Integer)
