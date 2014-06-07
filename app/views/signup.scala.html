@@ -5,9 +5,10 @@
 
 @main(Messages("playauthenticate.signup.title"),"signup") {
     
-
-    <div class="container">
-<div class="row">
+<section class="page_section" id="contact">
+            <!-- section header -->
+            <header>
+                <div class="container" ><div class="row">
 
 	<div class="col-lg-12">
 		<h2 class="page-header">@Messages("playauthenticate.signup.title")</h2>
@@ -34,7 +35,7 @@
              
              @_passwordPartial(signupForm)
 
-            <input type="submit" value="@Messages("playauthenticate.signup.now")" class="btn btn-primary">
+            <input type="submit" value="@Messages("playauthenticate.signup.now")" class="send_btn" >
     	}
     </div>
     </div>
@@ -47,4 +48,6 @@
 
   </div>
 </div>
+</header>
+</section>
 }
