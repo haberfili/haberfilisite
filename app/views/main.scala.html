@@ -59,6 +59,9 @@
   ga('send', 'pageview');
 
 </script>
+
+
+
 <script type="text/javascript">var switchTo5x=true;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "e6d24eb3-1709-4092-9fc2-2d0bc0b3b3cf", popup:true ,doNotHash: false, doNotCopy: false, hashAddressBar: false,shorten:false});</script>
@@ -84,6 +87,9 @@
 		 
 		<nav class="navmenu">
 			<ul class="menu">
+			<li class="menu-item">
+						<a href="/whatis">@Messages("haberfili.whatis")</a>
+					</li>
 			          @subjectPresentOr() {
           	@defining(Application.getLocalUser(session())) { user =>
 				
@@ -103,7 +109,8 @@
 					<li class="menu-item">
 						<a href="/signup">Sign Up</a>
 					</li>
-				}				
+				}	
+				
 				</ul>
 		</nav>
 		<div class="clear"></div>
@@ -116,6 +123,18 @@
 </div>
 </body>
         @content
-
+	<div class="footer">
+		<div class="footer_bottom container">            	
+                <div class="socials">                    
+                    <ul class="socials_list">
+                    	<li><a title="Facebook" class="ico_social-facebook" href="http://facebook.com/haberfilihaber" target="_blank"></a></li>
+                        <li><a title="Twitter" class="ico_social-twitter" href="http://twitter.com/haberfili" target="_blank"></a></li>
+                        <li><a title="Google Plus" class="ico_social-gplus" href="http://google.com" target="_blank"></a></li>
+                	</ul>            
+                </div>                
+                <div class="clear"></div>
+                <div class="copyright">&copy; 2014 HaberFili</div>
+            </div>
+     </div>
 </html>
 

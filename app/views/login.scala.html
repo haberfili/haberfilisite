@@ -5,7 +5,10 @@
 
 @main(Messages("playauthenticate.login.title"),"login") {
 
-<div class="container">
+  <section class="page_section" id="contact">
+            <!-- section header -->
+            <header>
+                <div class="container" >
 <div class="row">
 
 	<div class="col-lg-12">
@@ -31,7 +34,7 @@
           '_label -> Messages("playauthenticate.login.password.placeholder")
         )
           
-        <input type="submit" value="@Messages("playauthenticate.login.now")" class="btn btn-primary"><br/>
+        <input class="send_btn" type="submit" value="@Messages("playauthenticate.login.now")" class="btn btn-primary"><br/>
         <br/>
         <a href="javascript:void(0);" onclick="window.location.href = jsRoutes.controllers.Signup.forgotPassword($('#email').val() || null).absoluteURL();">@Messages("playauthenticate.login.forgot.password")</a>
 
@@ -50,4 +53,6 @@
 </div>
   
 </div>
+</header>
+</section>
 }

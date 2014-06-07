@@ -7,17 +7,11 @@
 	<div class="container">
 		 <h1>HaberFili</h1>
 		<p>@Messages("haberfili.subtitle")</p>
-		<p>
-			<a class="btn btn-primary btn-lg" href="/whatis" role="button">@Messages("haberfili.whatis")
-				&raquo;</a>
-		</p>
-	
 	</div>
 	
 	</header>
 	</section>
 </div>
-
 
 <div class="content_section container featured_items">
 	<!-- Example row of columns -->
@@ -26,11 +20,15 @@
 		<h2 class="page-header">@Messages("haberfili.news")</h2>
 	</div>
 		 -->
-	<div class="row clearfix" >
+	
 
 	@for(i <-0 to newsList.size()-1) {
-	<div class="col-md-3 clearfix">
-	<div class="item clearfix" >	
+	
+	@if(i % 4==0){
+	<div class="row"   >
+	}
+	<div class="col-md-3" style="display:flex;">
+	<div class="item">	
 	<div class="img_block hover_img" >
 			<a target="" href="/content/@newsList.get(i).id" >
 			<img alt="@newsList.get(i).title" src="@newsList.get(i).image" >
@@ -45,9 +43,10 @@
 			</div>
 			</div>
 			<div class="items_desc">
-				<p>@newsList.get(i).detail</p>
+				<p>@newsList.get(i).detail
 				<a target="_blank" href="@newsList.get(i).link" >Kaynak..</a>
-				<a href="/content/@newsList.get(i).id" >Devami..</a>	
+				<a href="/content/@newsList.get(i).id" >Devami..</a>
+				</p>	
 			</div>
 			<ul class="list-unstyled list-inline list-social-icons">
               
@@ -57,24 +56,19 @@
             </ul>
 			</div>
 	</div>
-	</div>		
+	</div>	
+		@if(i % 4==3){
+	</div>
+	}
+		
 	}
 	
-	</div>
-<a class="btn btn-primary" target="" href="/page/@page" role="button">Daha eski&raquo;</a>
-	<hr>
+	<div class="col-md-12">
+		<div class="load_more_cont"><a href="/page/@page" class="btn_load_more shortcode_button btn_type4">Daha fazla</a></div>
+   	</div>
 
-	<footer>
-
-		<p>&copy; Haberfili 2013</p>
-	<!-- 	<div class="col-md-2 col-sm-4 col-xs-6">
-			<a href="/language/de">de</a>
-			<a href="/language/en">en</a>
-			<a href="/language/tr">tr</a>
-		</div>
-		 -->
-	</footer>
 </div>
     }
+    
     
     

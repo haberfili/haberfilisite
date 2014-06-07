@@ -156,7 +156,7 @@ p {
 	padding:22px 0 0 0;
 }
 .page_section header {
-	color: #fff;
+	color:#444444;
 	width: 100%;
 	overflow:hidden;
 	padding-top:121px;
@@ -178,10 +178,7 @@ p {
 	text-transform:none;
 }
 .page_section header div.container p {
-	color:#fff;
 	font-weight:300;
-	text-align: center;
-	font-size:20px;
 	font-family: 'Open Sans', sans-serif;
 	line-height:22px;
 	padding:0 20px 10px 20px;
@@ -978,6 +975,24 @@ h3.title {
 }
 
 form input[type="text"] {
+	background: #CECFCF !important;
+	margin:0 0 10px 0 !important;
+	padding: 11px 15px 13px 15px;
+	width: 100%;
+	border:none !important;
+	outline:none !important;
+	border-radius:5px !important;
+	-webkit-border-radius:5px !important;
+	font-size:13px !important;
+	color:#444444 !important;
+	font-weight:400;
+	font-family: Arial;
+	box-shadow: 0 1px 1px #FFFFFF, 0 1px 1px rgba(0, 0, 0, 0.15) inset !important;
+	text-shadow: 0 1px 0 rgba(235, 235, 235, 0.75) !important;
+	line-height:18px;
+}
+
+form input[type="password"] {
 	background: #CECFCF !important;
 	margin:0 0 10px 0 !important;
 	padding: 11px 15px 13px 15px;
