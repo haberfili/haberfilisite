@@ -50,9 +50,9 @@ public class Application extends Controller {
 			final User localUser = getLocalUser(session());
 			Datastore datasource = DBConnector.getDatasource();
 			if(localUser==null || localUser.sources==null || localUser.sources.size()==0|| localUser.sources.size()==3){
-				newsList = datasource.find(News.class).order("- createDate").limit(50).asList(); 
+				newsList = datasource.find(News.class).order("- createDate").filter("category", null).limit(50).asList(); 
 			}else{
-				newsList = datasource.find(News.class).filter("source in", localUser.sources).order("- createDate").limit(50).asList();
+				newsList = datasource.find(News.class).filter("source in", localUser.sources).order("- createDate").filter("category", null).limit(50).asList();
 			}
 		} catch (Exception e) {
 			throw e;
@@ -67,9 +67,9 @@ public class Application extends Controller {
 			final User localUser = getLocalUser(session());
 			Datastore datasource = DBConnector.getDatasource();
 			if(localUser==null || localUser.sources==null || localUser.sources.size()==0|| localUser.sources.size()==3){
-				newsList = datasource.find(News.class).order("- createDate").offset((page+1)*50).limit(50).asList(); 
+				newsList = datasource.find(News.class).order("- createDate").filter("category", null).offset((page+1)*50).limit(50).asList(); 
 			}else{
-				newsList = datasource.find(News.class).filter("source in", localUser.sources).order("- createDate").offset((page+1)*50).limit(50).asList();
+				newsList = datasource.find(News.class).filter("source in", localUser.sources).order("- createDate").filter("category", null).offset((page+1)*50).limit(50).asList();
 			}
 		} catch (Exception e) {
 			throw e;
