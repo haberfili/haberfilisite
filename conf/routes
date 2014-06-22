@@ -53,6 +53,6 @@ GET     /content/:newsId     controllers.Application.viewNews(newsId: String)
 GET     /whatis                      controllers.Application.whatis
 
 GET     /page/:page/:category                      controllers.Application.indexPaginated(page:Integer,category:String)
-GET     /page/:page/ 								controllers.Application.indexPaginatedAll(page:Integer)
+GET     /page/:page 								controllers.Application.indexPaginatedAll(page:Integer)
 
 GET     /kategori/:category                      controllers.Application.getCategoryNews(category:String)
