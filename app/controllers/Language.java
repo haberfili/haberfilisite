@@ -47,7 +47,7 @@ public class Language extends Controller {
 		} catch (Exception e) {
 			throw e;
 		}
-		return ok(index.render(newsList,0));
+		return ok(index.render(newsList,0,null));
 	}
 	public static User getLocalUser(final Session session) {
 		final AuthUser currentAuthUser = PlayAuthenticate.getUser(session);
@@ -68,6 +68,6 @@ public class Language extends Controller {
 		} catch (Exception e) {
 			throw e;
 		}
-		return ok(index.render(newsList,0));
+		return ok(index.render(newsList,0,null));
 	}
 }

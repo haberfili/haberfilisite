@@ -1,4 +1,4 @@
-@(newsList : java.util.List[models.News],page:java.lang.Integer) 
+@(newsList : java.util.List[models.News],page:java.lang.Integer,category:java.lang.String) 
 @main(Messages("playauthenticate.index.title"),Messages("haberfili.subtitle")) {
 	
    <div id="blog" >
@@ -30,9 +30,12 @@
 	<div class="col-md-3" style="display:flex;">
 	<div class="item">	
 	<div class="img_block hover_img" >
+	@if(!"".equals(newsList.get(i).image)){
 			<a target="" href="/content/@newsList.get(i).id" >
 			<img alt="@newsList.get(i).title" src="@newsList.get(i).image" >
-			</a></div>
+			</a>
+	}		
+	</div>
 			<div class="items_body">
 			<div class="items_title">
 			<h5>
@@ -64,7 +67,7 @@
 	}
 	
 	<div class="col-md-12">
-		<div class="load_more_cont"><a href="/page/@page" class="btn_load_more shortcode_button btn_type4">Daha fazla</a></div>
+		<div class="load_more_cont"><a href="/page/@page/@category" class="btn_load_more shortcode_button btn_type4">Daha fazla</a></div>
    	</div>
 
 </div>

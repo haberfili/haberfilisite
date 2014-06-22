@@ -87,11 +87,19 @@
 			<a class="navbar-brand" href="/" style="color:#444444">HaberFili</a>
 		
 		 
-		<nav class="navmenu">
+		<nav class="navmenu" >
 			<ul class="menu">
-			<li class="menu-item">
+			
+					<li class="menu-item">
+						<a href="/kategori/spor">@Messages("haberfili.category.sport")</a>
+					</li>
+					<li class="menu-item">
+						<a href="/kategori/teknoloji">@Messages("haberfili.category.technology")</a>
+					</li>
+					<li class="menu-item">
 						<a href="/whatis">@Messages("haberfili.whatis")</a>
 					</li>
+					
 			          @subjectPresentOr() {
           	@defining(Application.getLocalUser(session())) { user =>
 				

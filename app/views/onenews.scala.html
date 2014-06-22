@@ -75,6 +75,7 @@
     <div class="content_section container"> 
             	<div class="row">
                 	<div class="row">
+            @if(!"".equals(news.image)){
                 	<div class="col-md-4">
 			<div class="img-rounded box" >
 			<div class="img_block hover_img">
@@ -85,6 +86,7 @@
             </div>
             </div>
             </div>
+            }
             <div class="col-md-4">
 			<h3>@news.title <small>@news.source</small> </h3>
 			 

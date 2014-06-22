@@ -57,9 +57,26 @@ public class Application extends Controller {
 		} catch (Exception e) {
 			throw e;
 		}
-		return ok(index.render(newsList,0));
+		return ok(index.render(newsList,0,null));
 	}
-	public static Result indexPaginated(int page) throws Exception{
+	public static Result indexPaginated(int page,String category) throws Exception{
+//		changeLang("de");
+		List<News> newsList = null;
+		try {
+			
+			final User localUser = getLocalUser(session());
+			Datastore datasource = DBConnector.getDatasource();
+			if(localUser==null || localUser.sources==null || localUser.sources.size()==0|| localUser.sources.size()==3){
+				newsList = datasource.find(News.class).order("- createDate").filter("category", category).offset((page+1)*50).limit(50).asList(); 
+			}else{
+				newsList = datasource.find(News.class).filter("source in", localUser.sources).order("- createDate").filter("category", category).offset((page+1)*50).limit(50).asList();
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return ok(index.render(newsList,page+1,category));
+	}
+	public static Result indexPaginatedAll(int page) throws Exception{
 //		changeLang("de");
 		List<News> newsList = null;
 		try {
@@ -74,7 +91,7 @@ public class Application extends Controller {
 		} catch (Exception e) {
 			throw e;
 		}
-		return ok(index.render(newsList,page+1));
+		return ok(index.render(newsList,page+1,null));
 	}
 	public static Result viewNews(String newsId) throws Exception{
 		News news = null;
@@ -214,5 +231,22 @@ public class Application extends Controller {
 	}
 	public static Result whatis() throws Exception{
 		return ok(whatis.render()); 
+	}
+	public static Result getCategoryNews(String category) throws Exception{
+//		changeLang("de");
+		List<News> newsList = null;
+		try {
+			
+			final User localUser = getLocalUser(session());
+			Datastore datasource = DBConnector.getDatasource();
+			if(localUser==null || localUser.sources==null || localUser.sources.size()==0|| localUser.sources.size()==3){
+				newsList = datasource.find(News.class).order("- createDate").filter("category", category).limit(50).asList(); 
+			}else{
+				newsList = datasource.find(News.class).filter("source in", localUser.sources).order("- createDate").filter("category", category).limit(50).asList();
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return ok(index.render(newsList,0,category));
 	}
 }
