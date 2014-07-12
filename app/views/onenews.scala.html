@@ -40,6 +40,24 @@
 	</div>
 	<div class="row clearfix" >
 	<div class="col-lg-12">
+	@if(news.similarNews!=null && news.similarNews.size()!=0){
+	<div class="col-lg-6">
+	
+			<h2 class="page-header">@Messages("haberfili.similarNews")</h2>
+	
+	<div class="list-group" >
+		@for(i <-0 to news.similarNews.size()-1) {
+	<a class="list-group-item" href="/content/@news.similarNews.get(i).id">	
+		<h4 class="list-group-item-heading">@news.similarNews.get(i).title <small>@news.similarNews.get(i).source</small></h4>
+		<p class="list-group-item-text">@news.similarNews.get(i).detail</p>	
+	</a>		
+	}
+	</div>
+	
+	
+	</div>
+	}
+	<div class="col-lg-6">
 		<h2 class="page-header">@Messages("haberfili.othernews")</h2>
 	
 	<div class="list-group" >
@@ -49,6 +67,7 @@
 		<p class="list-group-item-text">@newsList.get(i).detail</p>	
 	</a>		
 	}
+	</div>
 	</div>
 	</div>
 </div>
