@@ -27,7 +27,7 @@
             <div class="col-md-4">
 			<h3>@news.title <small>@news.source</small>
 			<br>
-			<small>@(new java.util.Date(news.createDate-(60*60*1000*9)).format("dd-MM-yyyy HH:mm")) </small></h3>
+			<small>@(new java.util.Date(news.createDate+(60*60*1000*3)).format("dd-MM-yyyy HH:mm")) </small></h3>
 			 
 			<p>@news.detail@news.detailMore
 				<a target="_blank" href="@news.link" >Kaynak..</a>
