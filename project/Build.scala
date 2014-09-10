@@ -14,7 +14,8 @@ object Build extends sbt.Build {
       "postgresql"    %   "postgresql"        % "9.1-901-1.jdbc4",
       javaCore,
       javaJdbc,
-      javaEbean
+      javaEbean,
+      cache
     )
 
 //  Uncomment this for local development of the Play Authenticate core:
