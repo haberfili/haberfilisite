@@ -14,6 +14,7 @@ import mongo.DBConnector;
 import org.bson.types.ObjectId;
 
 import play.Routes;
+import play.cache.Cache;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Http.Session;
@@ -50,7 +51,7 @@ public class Application extends Controller {
 			final User localUser = getLocalUser(session());
 			Datastore datasource = DBConnector.getDatasource();
 			if(localUser==null || localUser.sources==null || localUser.sources.size()==0|| localUser.sources.size()==3){
-				newsList = datasource.find(News.class).order("- createDate").filter("category", null).limit(50).asList(); 
+				newsList = getRecentNewsList();
 			}else{
 				newsList = datasource.find(News.class).filter("source in", localUser.sources).order("- createDate").filter("category", null).limit(50).asList();
 			}
@@ -58,6 +59,17 @@ public class Application extends Controller {
 			throw e;
 		}
 		return ok(index.render(newsList,0,null));
+	}
+	private static List<News> getRecentNewsList() {
+		Datastore datasource = DBConnector.getDatasource();
+		List<News> newsList;
+		if(Cache.get("newsList")==null){
+			System.out.println("not found in cache");
+			newsList = datasource.find(News.class).order("- createDate").filter("category", null).limit(50).asList();
+			Cache.set("newsList", newsList,120);
+		}
+		newsList=(List<News>) Cache.get("newsList");
+		return newsList;
 	}
 	public static Result indexPaginated(int page,String category) throws Exception{
 //		changeLang("de");
@@ -105,7 +117,7 @@ public class Application extends Controller {
 			if(news.detail!=null && news.detail.indexOf("...")!=-1){
 				news.detail=news.detail.replace("...", "");
 			}
-			List<News> allNewsList = datasource.find(News.class).order("- createDate").limit(40).asList();
+			List<News> allNewsList = getRecentNewsList();
 			Random  random= new Random();
 			while(newsList.size()<5){
 				int randomNewsId=random.nextInt(allNewsList.size()-1);
