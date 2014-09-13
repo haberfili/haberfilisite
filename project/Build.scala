@@ -27,9 +27,14 @@ object Build extends sbt.Build {
       libraryDependencies += "com.feth" %% "play-easymail" % "0.5-SNAPSHOT",
       libraryDependencies += "org.mindrot" % "jbcrypt" % "0.3m",
       libraryDependencies += "commons-lang" % "commons-lang" % "2.6",
-
+      libraryDependencies += "com.google.code.morphia" % "morphia" % "0.99",
+      
       resolvers += Resolver.url("play-easymail (release)", url("http://joscha.github.com/play-easymail/repo/releases/"))(Resolver.ivyStylePatterns),
-      resolvers += Resolver.url("play-easymail (snapshot)", url("http://joscha.github.com/play-easymail/repo/snapshots/"))(Resolver.ivyStylePatterns)
+      resolvers += Resolver.url("play-easymail (snapshot)", url("http://joscha.github.com/play-easymail/repo/snapshots/"))(Resolver.ivyStylePatterns),
+      resolvers += Resolver.url("MavenRepo", url("http://repo1.maven.org/maven2/"))(Resolver.ivyStylePatterns),
+	  resolvers += Resolver.url("JavaNet1Repository", url("http://download.java.net/maven/1/"))(Resolver.ivyStylePatterns),
+	  resolvers += Resolver.url("GoogleCode", url("http://morphia.googlecode.com/svn/mavenrepo/"))(Resolver.ivyStylePatterns)
+      
     )
 */
 
