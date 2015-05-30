@@ -3,6 +3,8 @@
 # ~~~~
 
 # Home page
+GET   /ajax-call/:req          controllers.Application.ajaxCall(req: String)
+GET   /guncelHaberler          controllers.Application.getRecentNews
 GET     /                           controllers.Application.index
 GET     /restricted                 controllers.Application.restricted
 GET     /assets/javascript/routes.js    controllers.Application.jsRoutes

@@ -1,4 +1,4 @@
-@(news : models.News,newsList : java.util.List[models.News])
+@(news : models.News)
 @import be.objectify.deadbolt.java.views.html._
 @import be.objectify.deadbolt.core.utils.TemplateUtils._
 @mainonenews(news) {
@@ -42,35 +42,23 @@
 	</div>
 	<div class="row clearfix" >
 	<div class="col-lg-12">
-	@if(news.similarNews!=null && news.similarNews.size()!=0){
-	<div class="col-lg-6">
+         
+    <script type="text/javascript">
+	        $.get( "/guncelHaberler", function( data ) {
+        	  $( ".result" ).html( data );
+        	  $("#divRecentNews").append(data);
+        	});
+        </script>     
+	<div id= "divRecentNews" class="col-lg-6"></div>
+
+	<script type="text/javascript">
+      $.get( "/ajax-call/@news.id", function( data ) {
+     	  $( ".result" ).html( data );
+     	  $("#divSimilarNews").append(data);
+     	});
+     </script>
+	<div id="divSimilarNews" class="col-lg-6"></div>
 	
-			<h2 class="page-header">@Messages("haberfili.similarNews")</h2>
-	
-	<div class="list-group" >
-		@for(i <-0 to news.similarNews.size()-1) {
-	<a class="list-group-item" href="/content/@news.similarNews.get(i).id">	
-		<h4 class="list-group-item-heading">@news.similarNews.get(i).title <small>@news.similarNews.get(i).source</small></h4>
-		<p class="list-group-item-text">@news.similarNews.get(i).detail</p>	
-	</a>		
-	}
-	</div>
-	
-	
-	</div>
-	}
-	<div class="col-lg-6">
-		<h2 class="page-header">@Messages("haberfili.othernews")</h2>
-	
-	<div class="list-group" >
-		@for(i <-0 to newsList.size()-1) {
-	<a class="list-group-item" href="/content/@newsList.get(i).id">	
-		<h4 class="list-group-item-heading">@newsList.get(i).title <small>@newsList.get(i).source</small></h4>
-		<p class="list-group-item-text">@newsList.get(i).detail</p>	
-	</a>		
-	}
-	</div>
-	</div>
 	</div>
 </div>
 </div>

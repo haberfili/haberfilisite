@@ -10,10 +10,12 @@ import java.util.Random;
 import models.News;
 import models.User;
 import mongo.DBConnector;
+import mongo.DBConnectorLucene;
 
 import org.bson.types.ObjectId;
 
 import play.Routes;
+import play.api.mvc.RequestHeader;
 import play.cache.Cache;
 import play.data.Form;
 import play.mvc.Controller;
@@ -25,6 +27,8 @@ import providers.MyUsernamePasswordAuthProvider.MySignup;
 import views.html.index;
 import views.html.login;
 import views.html.onenews;
+import views.html.similarNews;
+import views.html.recentNews;
 import views.html.profile;
 import views.html.restricted;
 import views.html.signup;
@@ -105,9 +109,28 @@ public class Application extends Controller {
 		}
 		return ok(index.render(newsList,page+1,null));
 	}
+	
+	public static Result ajaxCall(String req) throws Exception{
+		Datastore datasource = DBConnectorLucene.getDatasource();
+		News news =datasource.get(News.class, new ObjectId(req));
+		System.out.println(news.similarNews.size());
+		return ok(similarNews.render(news));
+	}
+	
+	public static Result getRecentNews() throws Exception{
+		List<News> newsList=new ArrayList<News>();
+		List<News> allNewsList = getRecentNewsList();
+		Random  random= new Random();
+		while(newsList.size()<5){
+			int randomNewsId=random.nextInt(allNewsList.size()-1);
+			newsList.add(allNewsList.get(randomNewsId));
+		}
+		return ok(recentNews.render(newsList));
+	}
+	
 	public static Result viewNews(String newsId) throws Exception{
 		News news = null;
-		List<News> newsList=new ArrayList<News>();
+		
 		try {
 			Datastore datasource = DBConnector.getDatasource();
 			news =datasource.get(News.class, new ObjectId(newsId));
@@ -117,16 +140,11 @@ public class Application extends Controller {
 			if(news.detail!=null && news.detail.indexOf("...")!=-1){
 				news.detail=news.detail.replace("...", "");
 			}
-			List<News> allNewsList = getRecentNewsList();
-			Random  random= new Random();
-			while(newsList.size()<5){
-				int randomNewsId=random.nextInt(allNewsList.size()-1);
-				newsList.add(allNewsList.get(randomNewsId));
-			}
+			
 		} catch (Exception e) {
 			throw e;
 		}
-		return ok(onenews.render(news,newsList));
+		return ok(onenews.render(news));
 	}
 
 	public static User getLocalUser(final Session session) {

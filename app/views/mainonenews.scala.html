@@ -1,4 +1,4 @@
-@(news : models.News)(content: Html)
+@(news : models.News)(content: Html)(implicit req: play.api.mvc.RequestHeader)
 
 @import be.objectify.deadbolt.java.views.html._
 @import be.objectify.deadbolt.core.utils.TemplateUtils._

@@ -1,0 +1,21 @@
+@(newsList : java.util.List[models.News])
+@import be.objectify.deadbolt.java.views.html._
+@import be.objectify.deadbolt.core.utils.TemplateUtils._
+
+<!DOCTYPE html>
+<html>
+
+	<h2 class="page-header">@Messages("haberfili.othernews")</h2>
+	
+	<div class="list-group" >
+		@for(i <-0 to newsList.size()-1) {
+	<a class="list-group-item" href="/content/@newsList.get(i).id">	
+		<h4 class="list-group-item-heading">@newsList.get(i).title <small>@newsList.get(i).source</small></h4>
+		<p class="list-group-item-text">@newsList.get(i).detail</p>	
+	</a>		
+	}
+	</div>
+</html>
+
+
+    

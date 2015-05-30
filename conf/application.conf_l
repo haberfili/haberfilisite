@@ -9,7 +9,7 @@ application.secret="M8s9bHT3D=ItUHcZ2@`waof?hng5RPMlhoju4G9I@TqobyUqS7lCdF[5/4q^
 
 # The application languages
 # ~~~~~
-application.langs="tr,en,de,pl,fr,es,ja"
+application.langs="en,de,pl,fr,es,ja,tr"
 
 # Global object class
 # ~~~~~
@@ -39,12 +39,12 @@ application.langs="tr,en,de,pl,fr,es,ja"
 #module.mongo=${play.path}/modules/mongo
 
 # mongodb connection details
-mongo.host=localhost
-mongo.port=27017
-mongo.database=play
+mongo.host=ds061298.mongolab.com
+mongo.port=61298
+mongo.database=heroku_app20395923
 
-#mongo.username=test
-#mongo.password=test123
+mongo.username=mokarakaya
+mongo.password=passw0rd33
 # Evolutions
 # ~~~~~
 # You can disable evolutions if needed
