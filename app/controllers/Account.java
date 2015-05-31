@@ -26,7 +26,7 @@ public class Account extends Controller {
 	public static class Accept { 
 
 		@Required
-		@NonEmpty
+		@NonEmpty 
 		public Boolean accept;
 
 		public Boolean getAccept() {
