@@ -1,7 +1,7 @@
 import sbt._
 import Keys._
 import play.Project._
-
+import com.typesafe.sbt.SbtNativePackager._
 object Build extends sbt.Build {
 
     val appName         = "helloworldjava"
