@@ -283,7 +283,7 @@ p {
 .next_section {
 	width:44px;
 	height:27px;
-	background:url(../images/palette_icons.png) no-repeat -144px 0;
+	background:url(http://res.cloudinary.com/dhg2faqbk/image/upload/v1433109198/palette_icons_zhqvbp.png) no-repeat -144px 0;
 	display:block;
 	margin:90px auto 0 auto;
 	opacity: 1;
@@ -295,7 +295,7 @@ p {
 	opacity: 0.5;
 	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);
 }
-.back2top {background:url(../images/palette_icons.png) no-repeat -144px -27px;
+.back2top {background:url(http://res.cloudinary.com/dhg2faqbk/image/upload/v1433109198/palette_icons_zhqvbp.png) no-repeat -144px -27px;
 }
 
 .full_slider .next_section {
@@ -1336,7 +1336,7 @@ input.send_btn:hover {
 .socials_list li a.ico_social-instagram:before,
 .socials_list li a.ico_social-gplus:before,
 .socials_list li a.ico_social-dribbble:before {
-	background-image: url(../images/palette_icons.png);
+	background-image: url(http://res.cloudinary.com/dhg2faqbk/image/upload/v1433109198/palette_icons_zhqvbp.png);
 	background-repeat:no-repeat;
 }
 .socials_list li a.ico_social-facebook:before {background-position: 0 0;
@@ -1700,7 +1700,7 @@ nav.mobile_header {display:none!important;
     width: 88px;
 }
 .author-body:before {
-    background: url(../images/palette_icons.png) no-repeat -182px -75px;
+    background: url(http://res.cloudinary.com/dhg2faqbk/image/upload/v1433109198/palette_icons_zhqvbp.png) no-repeat -182px -75px;
     content: "";
     display: block;
     height: 29px;
@@ -1775,7 +1775,7 @@ ol.commentlist li .stand_comment {
     position: relative;
 }
 .thiscommentbody:before {
-    background: url(../images/palette_icons.png) no-repeat -182px -75px;
+    background: url(http://res.cloudinary.com/dhg2faqbk/image/upload/v1433109198/palette_icons_zhqvbp.png) no-repeat -182px -75px;
     content: "";
     display: block;
     height: 29px;
@@ -1934,7 +1934,7 @@ ol.commentlist li .comment_info {
 .widget_pages ul li a:before,
 .widget_categories ul li a:before,
 .widget_recent_entries ul li a:before {
-    background: url(../images/palette_icons.png) no-repeat -150px -136px;
+    background: url(http://res.cloudinary.com/dhg2faqbk/image/upload/v1433109198/palette_icons_zhqvbp.png) no-repeat -150px -136px;
     content: "";
     display: block;
     height: 9px;
@@ -2510,7 +2510,7 @@ a.shortcode_social_icon:hover i {color: #FFFFFF !important;
     position: relative;
 }
 .testimonial_item_wrapper .testimonials_text:before {
-    background: url(../images/palette_icons.png) no-repeat scroll -182px -75px rgba(0, 0, 0, 0);
+    background: url(http://res.cloudinary.com/dhg2faqbk/image/upload/v1433109198/palette_icons_zhqvbp.png) no-repeat scroll -182px -75px rgba(0, 0, 0, 0);
     content: "";
     display: block;
     height: 29px;
@@ -2573,7 +2573,7 @@ a.shortcode_social_icon:hover i {color: #FFFFFF !important;
 .shortcode_messagebox.box_type3 .box_close,
 .shortcode_messagebox.box_type4 .box_close,
 .shortcode_messagebox.box_type5 .box_close {
-    background: url(../images/palette_icons.png) no-repeat -180px -54px;
+    background: url(http://res.cloudinary.com/dhg2faqbk/image/upload/v1433109198/palette_icons_zhqvbp.png) no-repeat -180px -54px;
     display: block;
     height: 20px;
     position: absolute;
