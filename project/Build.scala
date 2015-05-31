@@ -5,7 +5,7 @@ import play.Project._
 object Build extends sbt.Build {
 
     val appName         = "helloworldjava"
-    val appVersion      = "1.0-SNAPSHOT"
+    val appVersion      = "1.0"
 
     val appDependencies = Seq(
       "be.objectify"  %%  "deadbolt-java"     % "2.2-RC2" exclude("com.typesafe.play", "play-cache_2.10"),
