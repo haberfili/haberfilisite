@@ -883,7 +883,7 @@ h3.title {
 #blog {/*position: relative;*/
 }
 #blog header{
-	background-image:url(../images/slide_bg/slide5_bg.jpg);
+	background-image:url(http://res.cloudinary.com/dhg2faqbk/image/upload/v1433108285/slide5_bg_vodirt.jpg);
 	background-position:center center;
 	background-attachment:fixed;
 	background-size:cover;
