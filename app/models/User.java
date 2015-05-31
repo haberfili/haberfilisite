@@ -21,9 +21,7 @@ import com.google.code.morphia.query.Query;
 import mongo.DBConnector;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
-import play.db.ebean.Model;
 
-import javax.persistence.*;
 
 import org.bson.types.ObjectId;
 

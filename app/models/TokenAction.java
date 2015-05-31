@@ -1,21 +1,12 @@
 package models;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
 
 import mongo.DBConnector;
 
 import org.bson.types.ObjectId;
 
 import play.data.format.Formats;
-import play.db.ebean.Model;
-
-import com.avaje.ebean.Ebean;
-import com.avaje.ebean.QueryIterator;
 import com.avaje.ebean.annotation.EnumValue;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.annotations.Entity;
