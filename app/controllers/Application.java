@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Random;
 
 import models.News;
+import models.NewsRefSimilarNews;
 import models.User;
 import mongo.DBConnector;
 import mongo.DBConnectorLucene;
@@ -133,7 +134,11 @@ public class Application extends Controller {
 		
 		try {
 			Datastore datasource = DBConnector.getDatasource();
+			try{
 			news =datasource.get(News.class, new ObjectId(newsId));
+			}catch(RuntimeException e){
+				e.printStackTrace();
+			}
 			if(news==null){
 				return redirect(routes.Application.index());
 			}
