@@ -114,7 +114,9 @@ public class Application extends Controller {
 	public static Result ajaxCall(String req) throws Exception{
 		Datastore datasource = DBConnectorLucene.getDatasource();
 		News news =datasource.get(News.class, new ObjectId(req));
-		System.out.println(news.similarNews.size());
+		if(news==null){
+			news=new News();
+		}
 		return ok(similarNews.render(news));
 	}
 	
